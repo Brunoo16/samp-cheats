@@ -6,7 +6,7 @@ void Thread()
 
 	DWORD OldProtect;
 
-	VirtualProtect((unsigned char*)0x438576, 6, PAGE_EXECUTE_READWRITE, &OldProtect);
+	VirtualProtect((unsigned char*)0x438576, 7, PAGE_EXECUTE_READWRITE, &OldProtect);
 
 	*(unsigned char*)0x438576 = 0xC6;
 	*(unsigned char*)0x438577 = 0x5;
@@ -14,6 +14,11 @@ void Thread()
 	*(unsigned char*)0x438579 = 0x91;
 	*(unsigned char*)0x43857A = 0x96;
 	*(unsigned char*)0x43857B = 0x0;
+	*(unsigned char*)0x43857C = 0x1;
+	
+	VirtualProtect((unsigned char*)0x588BE0, 1, PAGE_EXECUTE_READWRITE, &OldProtect);
+
+	*(unsigned char*)0x588BE0 = 0xA0;
 }
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
